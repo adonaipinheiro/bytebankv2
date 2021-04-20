@@ -1,3 +1,4 @@
+import 'package:bytebankv2/components/dashboard_button_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bytebankv2/core/core.dart';
@@ -5,8 +6,12 @@ import 'package:bytebankv2/core/core.dart';
 class Dashboard extends StatelessWidget {
   const Dashboard({Key key}) : super(key: key);
 
-  void navigateToContactList(context) {
+  void _navigateToContactsList(BuildContext context) {
     Navigator.pushNamed(context, '/contacts');
+  }
+
+  void _navigateToTransferList(BuildContext context) {
+    Navigator.pushNamed(context, '/transactions');
   }
 
   @override
@@ -31,37 +36,20 @@ class Dashboard extends StatelessWidget {
                 alignment: Alignment.center,
               ),
             ),
-            Material(
-              color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(4),
-              child: InkWell(
-                onTap: () {
-                  navigateToContactList(context);
-                },
-                child: Container(
-                  padding: EdgeInsets.all(8),
-                  height: 100,
-                  width: 150,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.people,
-                        color: Colors.white,
-                        size: 24.0,
-                      ),
-                      Text(
-                        'Contatos',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ],
-                  ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                DashboardButtonWidget(
+                  'Contatos',
+                  Icons.people,
+                  onClick: () => _navigateToContactsList(context),
                 ),
-              ),
+                DashboardButtonWidget(
+                  'Extratos',
+                  Icons.note,
+                  onClick: () => _navigateToTransferList(context),
+                ),
+              ],
             )
           ],
         ),

@@ -1,6 +1,7 @@
-import 'package:bytebankv2/screens/contacts/new_contact_page.dart';
 import 'package:flutter/material.dart';
 
+import 'package:bytebankv2/screens/contacts/new_contact_page.dart';
+import 'package:bytebankv2/screens/transactions/transactions_list.dart';
 import 'package:bytebankv2/screens/contacts/contacts_page.dart';
 import 'package:bytebankv2/screens/dashboard/dashboard_page.dart';
 
@@ -24,6 +25,7 @@ class ByteBank extends StatelessWidget {
         '/': (context) => Dashboard(),
         '/contacts': (context) => ContactsList(),
         '/new_contact': (context) => ContactForm(),
+        '/transactions': (context) => TransactionsList(),
       },
     );
   }
