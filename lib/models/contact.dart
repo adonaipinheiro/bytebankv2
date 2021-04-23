@@ -25,4 +25,15 @@ class Contact {
   String toString() {
     return '{id: $id, name: $_name, accountNumber: $_accountNumber}';
   }
+
+  Contact.fromJson(Map<String, dynamic> json)
+      : _name = json['name'],
+        _accountNumber = json['accountNumber'],
+        id = json['id'];
+
+  Map<String, dynamic> toJson() => {
+        'name': _name,
+        'accountNumber': _accountNumber,
+        'id': id,
+      };
 }
