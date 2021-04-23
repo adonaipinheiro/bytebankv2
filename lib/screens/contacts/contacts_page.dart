@@ -1,6 +1,7 @@
 import 'package:bytebankv2/components/card_widget.dart';
 import 'package:bytebankv2/database/dao/contact_dao.dart';
 import 'package:bytebankv2/models/contact.dart';
+import 'package:bytebankv2/screens/transactions/transaction_form.dart';
 import 'package:flutter/material.dart';
 
 class ContactsList extends StatefulWidget {
@@ -55,7 +56,16 @@ class _ContactListState extends State<ContactsList> {
               return ListView.builder(
                 itemBuilder: (context, id) {
                   final Contact contact = contacts[id];
-                  return ContactItem(contact);
+                  return ContactItem(
+                    contact,
+                    onClick: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => TransactionForm(contact),
+                        ),
+                      );
+                    },
+                  );
                 },
                 itemCount: contacts.length,
               );
